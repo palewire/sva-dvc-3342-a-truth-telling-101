@@ -1,5 +1,12 @@
 import { expect, test } from '@playwright/test';
 
+const basePath = process.env.BASE_PATH ?? '';
+const canonicalUrl = process.env.VITE_CANONICAL_URL;
+const shareImagePath = `${basePath}/social/sva-continuing-education.avif`;
+const shareImageUrl = canonicalUrl
+  ? new URL(shareImagePath, canonicalUrl).href
+  : shareImagePath;
+
 test('shows the SVA course facts without artwork in the hero', async ({ page }) => {
   await page.goto('./');
 
@@ -10,21 +17,77 @@ test('shows the SVA course facts without artwork in the hero', async ({ page }) 
     'content',
     /Fall 2026 syllabus/
   );
-  await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+    'content',
+    shareImageUrl
+  );
+  await expect(page.locator('meta[property="og:image:type"]')).toHaveAttribute(
+    'content',
+    'image/avif'
+  );
+  await expect(page.locator('meta[property="og:image:width"]')).toHaveAttribute(
+    'content',
+    '1777'
+  );
+  await expect(page.locator('meta[property="og:image:height"]')).toHaveAttribute(
+    'content',
+    '999'
+  );
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
+    'content',
+    'summary_large_image'
+  );
+  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute(
+    'content',
+    shareImageUrl
+  );
+  if (canonicalUrl) {
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      'href',
+      canonicalUrl
+    );
+  } else {
+    await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+  }
+  const departmentUrl = 'https://sva.edu/academics/continuing-education/overview';
+  await expect(page.locator('.brand-mark')).toHaveAttribute('href', 'https://sva.edu');
+  await expect(page.locator('.brand-name')).toHaveAttribute('href', 'https://sva.edu');
+  await expect(page.locator('.brand-program')).toHaveText('Continuing Education');
+  await expect(page.locator('.brand-program')).toHaveAttribute('href', departmentUrl);
+  await expect(page.locator('.site-footer')).toHaveCount(0);
+  await expect(page.locator('body')).not.toContainText('Professional Development');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Truth-Telling 101');
   await expect(page.locator('.hero-proposition')).toHaveText(
-    "Learn how New York's leading newsrooms turn raw data into compelling stories"
+    "Learn how New York's leading newsrooms turn raw data into compelling journalism"
   );
   await expect(page.locator('.introduction-copy p')).toHaveText([
     'In this hands-on introduction to data journalism, students will learn how to blend statistical analysis with time-tested reporting techniques.',
-    'You will work through the full arc of a data-driven story by identifying newsworthy questions, locating data that can provide the answers, preparing it for rigorous analysis, and interviewing it to develop meaningful findings.'
+    'You will practice the fundamental skills of the craft by working through the full arc of data-driven stories, together in class and then on your own. By the end of the six-week course, you will be ready to pitch a professional editor.'
   ]);
   await expect(page.locator('.introduction .section-kicker')).toHaveText(
     'About this course'
   );
   await expect(page.locator('#introduction-title')).toHaveText(
-    'Data science on a deadline'
+    'Data science on deadline'
   );
+  await expect(page.locator('.skills-section .section-kicker')).toHaveText(
+    "What we'll cover"
+  );
+  await expect(page.locator('#skills-title')).toHaveText('Fundamental skills');
+  await expect(page.locator('.skills-section .section-intro')).toHaveText(
+    "You'll get multiple rounds of practice applying the key techniques common to every data story."
+  );
+  await expect(page.locator('.course-skill')).toHaveCount(6);
+  await expect(page.locator('.skill-number')).toHaveCount(0);
+  await expect(page.locator('.course-skill svg')).toHaveCount(6);
+  await expect(page.locator('.course-skill h3')).toHaveText([
+    'Identifying newsworthy questions',
+    'Locating data that can provide the answers',
+    'Preparing raw data for rigorous analysis',
+    'Interviewing data to develop meaningful findings',
+    'Verifying your findings in the real world',
+    'Ensuring subjects have an opportunity to respond'
+  ]);
   await expect(page.locator('.course-quote p')).toHaveText(
     "“To cope with the acceleration of social change in today's world, journalism must become social science in a hurry.”"
   );
@@ -53,44 +116,46 @@ test('shows the SVA course facts without artwork in the hero', async ({ page }) 
 test('links the instructor photo to the bio page', async ({ page }) => {
   await page.goto('./');
 
+  await expect(page.locator('.instructor-section .section-intro')).toHaveText(
+    'Each class will be led in person by a working professional.'
+  );
   const photoLink = page.locator('.instructor-avatar');
   await expect(photoLink).toHaveAttribute('href', 'https://palewi.re/who-is-ben-welsh/');
-  await expect(photoLink.locator('img')).toHaveAttribute('src', /\/ben-welsh\.jpg$/);
+  await expect(photoLink.locator('img')).toHaveAttribute(
+    'src',
+    /\/ben-welsh-transparent\.png$/
+  );
   await expect(page.locator('.instructor-affiliation')).toHaveText(
     'News Applications Editor, Reuters'
   );
-  await expect(
-    page.locator('.instructor-details > p:not(.instructor-affiliation)')
-  ).toHaveText(
+  await expect(page.locator('.instructor-bio')).toHaveText(
     'I am a reporter, editor and computer programmer with more than 20 years of journalism experience. You contact me at b@palewi.re.'
   );
-  await expect(
-    page.locator('.instructor-details a[href="mailto:b@palewi.re"]')
-  ).toHaveText('b@palewi.re');
+  await expect(page.locator('.instructor-bio a[href="mailto:b@palewi.re"]')).toHaveText(
+    'b@palewi.re'
+  );
 });
 
-test('lists all six unpublished class dates as plain text', async ({ page }) => {
+test('shows one disabled classroom script', async ({ page }) => {
   await page.goto('./');
 
-  const dates = [
-    ['2026-10-05', 'Monday, Oct. 5'],
-    ['2026-10-12', 'Monday, Oct. 12'],
-    ['2026-10-19', 'Monday, Oct. 19'],
-    ['2026-10-26', 'Monday, Oct. 26'],
-    ['2026-11-02', 'Monday, Nov. 2'],
-    ['2026-11-09', 'Monday, Nov. 9']
-  ];
-  const weeks = page.locator('.week-card');
-  await expect(weeks).toHaveCount(dates.length);
-
-  for (const [index, [date, label]] of dates.entries()) {
-    const week = weeks.nth(index);
-    await expect(week.locator('time')).toHaveAttribute('datetime', date);
-    await expect(week.locator('time')).toHaveText(label);
-    await expect(week.locator('.week-topic')).toHaveText('To be announced');
-    await expect(week.locator('a')).toHaveCount(0);
-  }
+  await expect(page.locator('.meeting-dates')).toHaveCount(0);
+  await expect(page.locator('#scripts .section-kicker')).toHaveText('Documentation');
+  await expect(page.locator('#scripts-title')).toHaveText('Classroom scripts');
+  await expect(page.locator('#scripts .section-intro')).toHaveText(
+    'All of the materials we cover will be made available here after class.'
+  );
+  await expect(page.locator('.script-card')).toHaveCount(1);
+  await expect(page.locator('.script-card')).toHaveAttribute('aria-disabled', 'true');
+  await expect(page.locator('.script-card h3')).toHaveText('Social science in a hurry');
+  await expect(page.locator('.script-card p')).toHaveText('October 5, 2026');
+  await expect(page.locator('.script-card a')).toHaveCount(0);
   await expect(page.locator('a[href*="/weeks/"]')).toHaveCount(0);
+  const sections = page.locator('main > section');
+  await expect(sections.nth((await sections.count()) - 1)).toHaveAttribute(
+    'id',
+    'scripts'
+  );
 });
 
 test('names the three booked guests without assigning dates', async ({ page }) => {
@@ -117,17 +182,17 @@ test('names the three booked guests without assigning dates', async ({ page }) =
     if (name === 'Caitlin Ostroff') {
       await expect(card.locator('img')).toHaveAttribute(
         'src',
-        /\/speakers\/caitlin-ostroff\.jpg$/
+        /\/speakers\/caitlin-ostroff-transparent\.png$/
       );
     } else if (name === 'Haidee Chu') {
       await expect(card.locator('img')).toHaveAttribute(
         'src',
-        /\/speakers\/haidee-chu\.jpg$/
+        /\/speakers\/haidee-chu-transparent\.png$/
       );
     } else if (name === 'Bianca Pallaro') {
       await expect(card.locator('img')).toHaveAttribute(
         'src',
-        /\/speakers\/bianca-pallaro\.png$/
+        /\/speakers\/bianca-pallaro-transparent\.png$/
       );
     } else {
       await expect(card.locator('img')).toHaveCount(0);
@@ -146,8 +211,29 @@ test('fits a phone screen and supports the keyboard skip link', async ({ page })
     () => document.documentElement.scrollWidth - document.documentElement.clientWidth
   );
   expect(overflow).toBeLessThanOrEqual(1);
-  await expect(page.locator('.week-card')).toHaveCount(6);
+  await expect(page.locator('.script-card')).toHaveCount(1);
   await expect(page.locator('.speaker-card')).toHaveCount(3);
+  for (const portrait of await page.locator('.speaker-portrait').all()) {
+    await expect(portrait).toHaveCSS('background-color', 'rgb(30, 150, 184)');
+    await expect(portrait).toHaveCSS('border-radius', '0px');
+  }
+  const instructorCard = page.locator('.instructor-profile');
+  const instructorAvatar = page.locator('.instructor-avatar');
+  const instructorDetails = page.locator('.instructor-details');
+  const instructorBio = page.locator('.instructor-bio');
+  await expect(instructorCard).toHaveCSS('padding', '12px');
+  await expect(instructorAvatar).toHaveCSS('width', '80px');
+  await expect(instructorAvatar).toHaveCSS('height', '80px');
+  await expect(instructorAvatar).toHaveCSS('background-color', 'rgb(30, 150, 184)');
+  await expect(instructorAvatar).toHaveCSS('border-radius', '0px');
+  const avatarBox = await instructorAvatar.boundingBox();
+  const detailsBox = await instructorDetails.boundingBox();
+  const bioBox = await instructorBio.boundingBox();
+  expect(avatarBox).not.toBeNull();
+  expect(detailsBox).not.toBeNull();
+  expect(bioBox).not.toBeNull();
+  expect(detailsBox!.x).toBeGreaterThan(avatarBox!.x + avatarBox!.width);
+  expect(bioBox!.y).toBeGreaterThanOrEqual(avatarBox!.y + avatarBox!.height);
 
   await page.keyboard.press('Tab');
   await expect(page.getByRole('link', { name: 'Skip to main content' })).toBeFocused();
@@ -166,7 +252,7 @@ test('prints the syllabus in black on white without navigation or portrait block
   for (const portrait of await page.locator('.speaker-portrait').all()) {
     await expect(portrait).toBeHidden();
   }
-  await expect(page.locator('.week-card')).toHaveCount(6);
+  await expect(page.locator('.script-card')).toHaveCount(1);
   expect(
     await page
       .locator('.hero')

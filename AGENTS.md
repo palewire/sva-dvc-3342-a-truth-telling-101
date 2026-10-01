@@ -7,18 +7,22 @@ the CUNY course site. Keep this guide current when the project structure changes
 ## Content
 
 - Edit course facts and public-facing copy in `src/content/homepage.yaml`.
-- Keep all six Monday dates visible. Do not invent weekly topics, assignments,
-  guest dates, or headshots. A week link belongs in the YAML only after its
-  matching `src/content/weeks/week-N.svx` page is ready.
+- Keep the six Monday dates in the structured content, but they do not need to
+  appear together on the page. Do not invent weekly topics, assignments, guest
+  dates, or headshots. A week link belongs in the YAML only after its matching
+  `src/content/weeks/week-N.svx` page is ready.
 - Do not add student information, enrollment figures, or classroom door codes.
 - Link to the official SVA listing for registration, location, and policies.
 
 ## Code and design
 
 - Use Svelte 5, TypeScript, the existing static build, and MDsveX for future
-  weekly pages. Keep the site small; no backend or deployment workflow is set up.
-- The SVA mark and Ringside/Sentinel fonts are used with permission and are not
-  part of the MIT source-code license. Keep the SVA color and type tokens in
+  weekly pages. Keep the site small; there is no backend.
+- Production builds publish to the S3 `docs/truth-telling-101` prefix for
+  `https://palewi.re/docs/truth-telling-101/`. Cloudflare routing is configured
+  outside this repository.
+- The SVA mark and Ringside fonts are used with permission and are not part of
+  the MIT source-code license. Keep the SVA color and type tokens in
   `src/app.css`. The hero has no illustration.
 - Preserve keyboard access, readable contrast, mobile layout, and print styles.
 - `BASE_PATH` and `VITE_CANONICAL_URL` remain configurable until a host is chosen.

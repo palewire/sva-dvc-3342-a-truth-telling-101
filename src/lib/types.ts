@@ -2,12 +2,18 @@ export interface CourseContent {
   meta: {
     title: string;
     description: string;
+    image: string;
+    imageAlt: string;
+    imageWidth: string;
+    imageHeight: string;
   };
   course: {
     title: string;
     code: string;
     school: string;
+    schoolUrl: string;
     program: string;
+    programUrl: string;
     term: string;
     proposition: string;
     meetingLabel: string;
@@ -28,6 +34,12 @@ export interface CourseContent {
     quoteAttribution: string;
     quoteUrl: string;
   };
+  skills: {
+    kicker: string;
+    title: string;
+    description: string;
+    items: CourseSkill[];
+  };
   schedule: {
     kicker: string;
     title: string;
@@ -43,15 +55,13 @@ export interface CourseContent {
   instructor: {
     kicker: string;
     title: string;
+    description: string;
     name: string;
     role: string;
     bio: string;
     email: string;
     profileUrl: string;
     photo?: string;
-  };
-  footer: {
-    note: string;
   };
 }
 
@@ -68,4 +78,12 @@ export interface GuestSpeaker {
   newsroom: string;
   workUrl: string;
   photo?: string;
+}
+
+export type CourseSkillIcon =
+  'Lightbulb' | 'Database' | 'Hammer' | 'BarChart3' | 'Map' | 'MessageCircle';
+
+export interface CourseSkill {
+  title: string;
+  icon: CourseSkillIcon;
 }

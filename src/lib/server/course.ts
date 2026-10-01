@@ -1,5 +1,11 @@
 import { load } from 'js-yaml';
-import type { CourseContent, GuestSpeaker, Week } from '$lib/types';
+import type {
+  CourseContent,
+  CourseSkill,
+  CourseSkillIcon,
+  GuestSpeaker,
+  Week
+} from '$lib/types';
 
 const homepageFiles = import.meta.glob<string>('/src/content/homepage.yaml', {
   eager: true,
@@ -49,11 +55,35 @@ export function loadCourse(): CourseContent {
   const meta = object(root.meta, 'meta');
   const course = object(root.course, 'course');
   const introduction = object(root.introduction, 'introduction');
+  const skillsContent = object(root.skills, 'skills');
   const schedule = object(root.schedule, 'schedule');
   const guestSpeakers = object(root.guestSpeakers, 'guestSpeakers');
   const instructor = object(root.instructor, 'instructor');
-  const footer = object(root.footer, 'footer');
   const instructorPhoto = optionalString(instructor, 'photo', 'instructor');
+  const skillIcons = new Set<CourseSkillIcon>([
+    'Lightbulb',
+    'Database',
+    'Hammer',
+    'BarChart3',
+    'Map',
+    'MessageCircle'
+  ]);
+  const skills: CourseSkill[] = array(skillsContent.items, 'skills.items').map(
+    (item, index) => {
+      const skill = object(item, 'skills.items[' + index + ']');
+      const icon = string(skill, 'icon', 'skills.items[' + index + ']');
+      if (!skillIcons.has(icon as CourseSkillIcon)) {
+        throw new Error('skills.items[' + index + '].icon is not supported');
+      }
+      return {
+        title: string(skill, 'title', 'skills.items[' + index + ']'),
+        icon: icon as CourseSkillIcon
+      };
+    }
+  );
+  if (skills.length !== 6) {
+    throw new Error('skills.items must contain six items');
+  }
 
   const weeks: Week[] = array(schedule.weeks, 'schedule.weeks').map((item, index) => {
     const week = object(item, 'schedule.weeks[' + index + ']');
@@ -98,13 +128,19 @@ export function loadCourse(): CourseContent {
   return {
     meta: {
       title: string(meta, 'title', 'meta'),
-      description: string(meta, 'description', 'meta')
+      description: string(meta, 'description', 'meta'),
+      image: string(meta, 'image', 'meta'),
+      imageAlt: string(meta, 'imageAlt', 'meta'),
+      imageWidth: string(meta, 'imageWidth', 'meta'),
+      imageHeight: string(meta, 'imageHeight', 'meta')
     },
     course: {
       title: string(course, 'title', 'course'),
       code: string(course, 'code', 'course'),
       school: string(course, 'school', 'course'),
+      schoolUrl: string(course, 'schoolUrl', 'course'),
       program: string(course, 'program', 'course'),
+      programUrl: string(course, 'programUrl', 'course'),
       term: string(course, 'term', 'course'),
       proposition: string(course, 'proposition', 'course'),
       meetingLabel: string(course, 'meetingLabel', 'course'),
@@ -125,6 +161,12 @@ export function loadCourse(): CourseContent {
       quoteAttribution: string(introduction, 'quoteAttribution', 'introduction'),
       quoteUrl: string(introduction, 'quoteUrl', 'introduction')
     },
+    skills: {
+      kicker: string(skillsContent, 'kicker', 'skills'),
+      title: string(skillsContent, 'title', 'skills'),
+      description: string(skillsContent, 'description', 'skills'),
+      items: skills
+    },
     schedule: {
       kicker: string(schedule, 'kicker', 'schedule'),
       title: string(schedule, 'title', 'schedule'),
@@ -140,15 +182,13 @@ export function loadCourse(): CourseContent {
     instructor: {
       kicker: string(instructor, 'kicker', 'instructor'),
       title: string(instructor, 'title', 'instructor'),
+      description: string(instructor, 'description', 'instructor'),
       name: string(instructor, 'name', 'instructor'),
       role: string(instructor, 'role', 'instructor'),
       bio: string(instructor, 'bio', 'instructor'),
       email: string(instructor, 'email', 'instructor'),
       profileUrl: string(instructor, 'profileUrl', 'instructor'),
       ...(instructorPhoto ? { photo: instructorPhoto } : {})
-    },
-    footer: {
-      note: string(footer, 'note', 'footer')
     }
   };
 }

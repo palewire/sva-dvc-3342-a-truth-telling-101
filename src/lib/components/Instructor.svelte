@@ -15,6 +15,7 @@
       <p class="section-kicker">{instructor.kicker}</p>
       <h2 id="instructor-title">{instructor.title}</h2>
     </div>
+    <p class="section-intro">{instructor.description}</p>
     <div class="instructor-profile">
       <a
         class="instructor-avatar"
@@ -25,10 +26,12 @@
           <img src={base + '/' + instructor.photo} alt="" loading="lazy" />
         {/if}
       </a>
-      <div class="instructor-details">
-        <h3>{instructor.name}</h3>
-        <p class="instructor-affiliation">{instructor.role}</p>
-        <p>
+      <div class="instructor-copy">
+        <div class="instructor-details">
+          <h3>{instructor.name}</h3>
+          <p class="instructor-affiliation">{instructor.role}</p>
+        </div>
+        <p class="instructor-bio">
           {instructor.bio}
           <a href={'mailto:' + instructor.email}>{instructor.email}</a>.
         </p>

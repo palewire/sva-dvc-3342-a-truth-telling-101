@@ -2,9 +2,10 @@
   import type { PageData } from './$types';
   import Meta from '$lib/components/Meta.svelte';
   import Hero from '$lib/components/Hero.svelte';
-  import WeekSchedule from '$lib/components/WeekSchedule.svelte';
+  import ClassroomScripts from '$lib/components/ClassroomScripts.svelte';
   import GuestSpeakers from '$lib/components/GuestSpeakers.svelte';
   import Instructor from '$lib/components/Instructor.svelte';
+  import CourseSkills from '$lib/components/CourseSkills.svelte';
 
   let { data }: { data: PageData } = $props();
   const canonicalUrl = import.meta.env.VITE_CANONICAL_URL?.trim() || undefined;
@@ -39,7 +40,8 @@
     </div>
   </section>
 
-  <WeekSchedule schedule={data.site.schedule} />
+  <CourseSkills skills={data.site.skills} />
   <GuestSpeakers guests={data.site.guestSpeakers} />
   <Instructor instructor={data.site.instructor} />
+  <ClassroomScripts schedule={data.site.schedule} />
 </main>

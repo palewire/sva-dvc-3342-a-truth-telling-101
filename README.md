@@ -5,9 +5,9 @@ Arts continuing-education course. It follows the reference course site's
 SvelteKit, YAML, and MDsveX approach, but is a separate project with its own
 copy and appearance. No deployment is configured.
 
-The official SVA mark and locally bundled Ringside and Sentinel webfonts are
-used with permission. These brand and font assets are not covered by the MIT
-source-code license.
+The official SVA mark and locally bundled Ringside webfonts are used with
+permission. These brand and font assets are not covered by the MIT source-code
+license.
 
 ## Work locally
 
@@ -29,7 +29,15 @@ The static output is in build/. With no published week files, it contains only
 the syllabus page and static assets. The CI workflow checks lint, build,
 browser tests, and Lighthouse scores; CodeQL and Dependabot are also enabled.
 To run the optional local Lighthouse check, install Chrome and use
-`pnpm lighthouse`. None of these checks publish the site.
+`pnpm lighthouse`.
+
+Pushes to `main` also run the deployment workflow. It builds with
+`BASE_PATH=/docs/truth-telling-101` and
+`VITE_CANONICAL_URL=https://palewi.re/docs/truth-telling-101/`, then uploads
+`build/` to the S3 prefix in the `DOCS_AWS_BASE_PATH` repository variable. The
+workflow requires the `DOCS_AWS_ACCESS_KEY_ID`, `DOCS_AWS_SECRET_ACCESS_KEY`,
+`DOCS_AWS_REGION`, and `DOCS_AWS_BUCKET` repository secrets. Cloudflare routing
+for the public URL is configured separately from this repository.
 
 ## Edit the syllabus
 
@@ -39,11 +47,10 @@ bio, and official listing there. Do not put student details or a classroom door
 code in this public file.
 
 The six schedule entries may have an optional href. Leave it out while a week
-is unpublished; the page then shows its date and topic as plain text. The
-build rejects an href unless the matching MDsveX file exists. Guest cards use
-initials until Ben supplies or authorizes photos. To add an approved photo,
-put it at static/speakers/filename.jpg and add photo: filename.jpg to that
-guest's entry in the YAML file. A failed image also falls back to initials.
+is unpublished; the classroom scripts section then presents it as unavailable.
+The build rejects an href unless the matching MDsveX file exists. To add an
+approved guest photo, put it in static/speakers/ and add its filename to the
+guest's entry in the YAML file.
 
 ## Publish a week later
 
@@ -67,15 +74,11 @@ When the lesson is ready, update week 1's topic in homepage.yaml and add
 href: /weeks/week-1/ to its schedule entry. Then run pnpm lint and pnpm build.
 Do not add empty lessons merely to make the dates clickable.
 
-## Choose a URL later
+## Public URL
 
-The root build uses an empty BASE_PATH. If the eventual site lives below a
-path, set BASE_PATH without a trailing slash when building, for example
-BASE_PATH=/courses/truth-telling-101. Internal links and the favicon follow
-that path. After Ben chooses the public URL, set VITE_CANONICAL_URL to the full
-homepage URL, including its path and trailing slash. Until then, canonical
-metadata is omitted.
+The production site is built for
+`https://palewi.re/docs/truth-telling-101/`. Local builds use an empty
+`BASE_PATH` unless it is supplied explicitly. Internal links, assets, canonical
+metadata, and social-share metadata follow the configured production path.
 
 The repository is [palewire/sva-dvc-3342-a-truth-telling-101](https://github.com/palewire/sva-dvc-3342-a-truth-telling-101).
-There are no hosting credentials, production deployment workflow, or fixed
-public URL in this project. Choose the URL and host before adding those settings.

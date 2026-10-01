@@ -11,42 +11,24 @@
 
 <header class="masthead">
   <div class="container masthead-inner">
-    <a
-      class="brand"
-      href={base + '/'}
-      aria-label={data.site.course.title + ' syllabus home'}
-    >
-      <img src={base + '/sva-mark.svg'} alt="" width="45" height="45" />
+    <div class="brand">
+      <a
+        class="brand-mark"
+        href={data.site.course.schoolUrl}
+        aria-label={data.site.course.school + ' home'}
+      >
+        <img src={base + '/sva-mark.svg'} alt="" width="45" height="45" />
+      </a>
       <span class="brand-copy">
-        <span class="brand-name">{data.site.course.school}</span>
-        <span class="brand-program">{data.site.course.program}</span>
+        <a class="brand-name" href={data.site.course.schoolUrl}
+          >{data.site.course.school}</a
+        >
+        <a class="brand-program" href={data.site.course.programUrl}
+          >{data.site.course.program}</a
+        >
       </span>
-    </a>
+    </div>
   </div>
 </header>
 
 {@render children()}
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-main">
-      <div class="footer-identity">
-        <img src={base + '/sva-mark.svg'} alt="" width="45" height="45" />
-        <div>
-          <p class="footer-school">{data.site.course.school}</p>
-          <p>{data.site.course.program}</p>
-        </div>
-      </div>
-      <div class="footer-details">
-        <p>{data.site.footer.note}</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>{data.site.course.title}</span>
-      <span
-        >{data.site.course.term} <span aria-hidden="true">·</span>
-        {data.site.course.code}</span
-      >
-    </div>
-  </div>
-</footer>

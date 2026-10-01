@@ -30,14 +30,6 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Sentinel';
-  src: url('./lib/assets/fonts/SentinelSSm-Bold_Web.woff2') format('woff2');
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-}
-
 :root {
   font-family: 'Ringside', 'Helvetica Neue', Arial, sans-serif;
   color: #4d4d4d;
@@ -59,7 +51,6 @@
   --font-body: 'Ringside', 'Helvetica Neue', Arial, sans-serif;
   --font-ui: 'Ringside Compressed', 'Arial Narrow', Arial, sans-serif;
   --font-display: 'Ringside Extra Wide', 'Helvetica Neue', Arial, sans-serif;
-  --font-serif: 'Sentinel', Georgia, serif;
   --max-width: 1200px;
 }
 
@@ -153,14 +144,22 @@ h3 {
   min-width: 0;
   align-items: center;
   gap: 12px;
+}
+
+.brand-mark,
+.brand-name,
+.brand-program {
   text-decoration: none;
 }
 
-.brand img {
+.brand-mark {
+  flex: none;
+}
+
+.brand-mark img {
   display: block;
   width: 45px;
   height: 45px;
-  flex: none;
 }
 
 .brand-copy {
@@ -187,7 +186,7 @@ h3 {
   text-transform: uppercase;
 }
 
-.brand:hover .brand-name {
+.brand-name:hover {
   color: var(--sva-charcoal);
 }
 
@@ -242,7 +241,7 @@ h3 {
   margin-bottom: 12px;
   color: var(--sva-red);
   font-family: var(--font-ui);
-  font-size: 64px;
+  font-size: 80px;
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.06;
@@ -400,16 +399,16 @@ h3 {
   align-self: start;
   margin: 0;
   padding: 32px;
-  background: var(--sva-pale-yellow);
-  border-left: 4px solid var(--sva-orange);
-  border-radius: 0 8px 8px 0;
+  background: var(--white);
+  border: 1px solid var(--sva-blue);
+  border-bottom-width: 4px;
 }
 
 .course-quote p {
   margin-bottom: 16px;
   color: var(--sva-charcoal);
-  font-family: var(--font-serif);
-  font-size: 24px;
+  font-family: var(--font-body);
+  font-size: 21px;
   font-weight: 700;
   line-height: 1.35;
   text-indent: -0.45em;
@@ -424,28 +423,56 @@ h3 {
 }
 
 .course-quote cite a {
-  color: inherit;
+  color: var(--sva-red-on-surface);
+  font-weight: 700;
+}
+
+.course-skills {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.course-skill {
+  min-width: 0;
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--sva-blue);
+}
+
+.skill-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.course-skill svg {
+  flex: none;
+  color: var(--sva-red);
+}
+
+.course-skill h3 {
+  margin: 0;
+  color: var(--sva-charcoal);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.35;
 }
 
 .schedule-section {
-  background: var(--surface);
-}
-
-.week-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.week-card {
-  min-width: 0;
-  padding: 32px;
   background: var(--white);
-  border: 1px solid var(--rule);
-  border-radius: 8px;
+}
+
+.script-card {
+  max-width: 380px;
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--sva-blue);
+}
+
+.script-card-disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .week-number {
@@ -457,7 +484,7 @@ h3 {
   text-transform: uppercase;
 }
 
-.week-card h3 {
+.script-card h3 {
   margin: 12px 0 8px;
   color: var(--sva-charcoal);
   font-family: var(--font-body);
@@ -466,15 +493,10 @@ h3 {
   line-height: 1.2;
 }
 
-.week-topic {
+.script-card p {
   margin-bottom: 0;
   color: var(--sva-copy);
   font-size: 16px;
-}
-
-.week-topic a {
-  color: var(--sva-red);
-  font-weight: 700;
 }
 
 .guests-section {
@@ -494,8 +516,7 @@ h3 {
   gap: 16px;
   padding: 16px;
   background: var(--white);
-  border: 1px solid var(--rule);
-  border-radius: 8px;
+  border: 1px solid var(--sva-blue);
   color: inherit;
   text-decoration: none;
   transition:
@@ -522,16 +543,7 @@ h3 {
   flex: none;
   place-items: center;
   overflow: hidden;
-  background: var(--sva-charcoal);
-  border-radius: 4px;
-}
-
-.speaker-card:nth-child(2) .speaker-portrait {
-  background: #2189a6;
-}
-
-.speaker-card:nth-child(3) .speaker-portrait {
-  background: var(--sva-red);
+  background: var(--sva-blue);
 }
 
 .speaker-portrait img {
@@ -560,20 +572,24 @@ h3 {
 
 .speaker-info p {
   margin-bottom: 8px;
-  color: var(--sva-copy);
+  color: var(--sva-red-on-surface);
   font-size: 14px;
+  font-weight: 700;
   line-height: 1.4;
 }
 
 .instructor-section {
-  background: var(--surface);
+  background: var(--white);
 }
 
 .instructor-profile {
   display: flex;
   max-width: 1000px;
-  align-items: flex-start;
+  align-items: start;
   gap: 32px;
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--sva-blue);
 }
 
 .instructor-avatar {
@@ -590,7 +606,6 @@ h3 {
   font-weight: 700;
   line-height: 1;
   overflow: hidden;
-  border-radius: 4px;
   text-decoration: none;
   transition:
     transform 160ms ease,
@@ -620,6 +635,13 @@ h3 {
   max-width: 700px;
 }
 
+.instructor-copy {
+  display: flex;
+  max-width: 700px;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .instructor-details h3 {
   margin-bottom: 4px;
   color: var(--sva-charcoal);
@@ -628,81 +650,25 @@ h3 {
 }
 
 .instructor-affiliation {
-  margin-bottom: 16px;
+  margin-bottom: 0;
   color: var(--sva-red-on-surface);
   font-size: 16px;
   font-weight: 700;
 }
 
-.instructor-details > p:not(.instructor-affiliation) {
-  margin-bottom: 16px;
+.instructor-bio {
+  max-width: 700px;
+  margin-bottom: 0;
   font-size: 16px;
   line-height: 1.7;
 }
 
-.instructor-details a {
+.instructor-bio a {
   color: var(--sva-red-on-surface);
   font-weight: 700;
 }
 
-.site-footer {
-  padding-top: 50px;
-  background: var(--sva-charcoal);
-  color: var(--white);
-}
-
-.footer-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-}
-
-.footer-identity {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-}
-
-.footer-identity img {
-  width: 45px;
-  height: 45px;
-  flex: none;
-}
-
-.site-footer p {
-  max-width: 500px;
-  margin-bottom: 8px;
-  font-size: 16px;
-}
-
-.footer-school {
-  color: var(--sva-yellow);
-  font-family: var(--font-display);
-  font-weight: 700;
-}
-
-.footer-details a {
-  color: var(--sva-yellow);
-  font-weight: 700;
-}
-
-.footer-details a:hover {
-  color: var(--white);
-}
-
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  margin-top: 48px;
-  padding-block: 24px;
-  border-top: 1px solid rgb(255 255 255 / 25%);
-  color: #e1e1e1;
-  font-size: 12px;
-}
-
-.hero a:focus-visible,
-.site-footer a:focus-visible {
+.hero a:focus-visible {
   outline-color: var(--sva-yellow);
 }
 
@@ -726,7 +692,7 @@ h3 {
 .week-page h1 {
   margin-bottom: 24px;
   color: var(--sva-charcoal);
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-size: 64px;
 }
 
@@ -773,6 +739,10 @@ h3 {
   .speakers-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .course-skills {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 760px) {
@@ -783,10 +753,6 @@ h3 {
 
   .course-quote {
     max-width: 600px;
-  }
-
-  .week-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -849,13 +815,13 @@ h3 {
     font-size: 28px;
   }
 
-  .week-grid,
-  .speakers-grid {
+  .speakers-grid,
+  .course-skills {
     grid-template-columns: 1fr;
   }
 
-  .week-card {
-    padding: 24px;
+  .script-card {
+    max-width: none;
   }
 
   .speaker-card {
@@ -868,24 +834,38 @@ h3 {
   }
 
   .instructor-profile {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1fr);
+    gap: 12px 16px;
+    padding: 12px;
   }
 
   .instructor-avatar {
-    width: 120px;
-    height: 120px;
-    font-size: 36px;
+    width: 80px;
+    height: 80px;
+    grid-row: auto;
+    font-size: 28px;
   }
 
-  .footer-main {
-    grid-template-columns: 1fr;
-    gap: 32px;
+  .instructor-details h3 {
+    font-size: 18px;
   }
 
-  .footer-bottom {
-    flex-direction: column;
-    gap: 4px;
-    margin-top: 32px;
+  .instructor-details {
+    align-self: center;
+  }
+
+  .instructor-copy {
+    display: contents;
+  }
+
+  .instructor-affiliation {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .instructor-bio {
+    grid-column: 1 / -1;
   }
 
   .week-page h1 {
@@ -933,8 +913,7 @@ h3 {
   .introduction,
   .schedule-section,
   .guests-section,
-  .instructor-section,
-  .site-footer {
+  .instructor-section {
     background: #fff;
     color: #000;
   }
@@ -944,8 +923,7 @@ h3 {
     padding-block: 6pt;
   }
 
-  .brand img,
-  .footer-identity img {
+  .brand img {
     width: 24pt;
     height: 24pt;
   }
@@ -964,14 +942,11 @@ h3 {
   .instructor-section .section-kicker,
   .section-header h2,
   .week-number,
-  .week-card h3,
+  .script-card h3,
   .course-quote p,
   .speaker-info h3,
   .instructor-details h3,
-  .instructor-affiliation,
-  .footer-school,
-  .footer-details a,
-  .footer-bottom {
+  .instructor-affiliation {
     color: #000;
   }
 
@@ -1046,12 +1021,7 @@ h3 {
     font-size: 13pt;
   }
 
-  .week-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 6pt;
-  }
-
-  .week-card,
+  .script-card,
   .speaker-card {
     break-inside: avoid;
     padding: 8pt;
@@ -1059,7 +1029,7 @@ h3 {
     border: 1px solid #888;
   }
 
-  .week-card h3 {
+  .script-card h3 {
     margin: 3pt 0;
     font-size: 12pt;
   }
@@ -1075,22 +1045,5 @@ h3 {
 
   .instructor-profile {
     display: block;
-  }
-
-  .site-footer {
-    padding-top: 8pt;
-    border-top: 1px solid #000;
-  }
-
-  .footer-main {
-    display: block;
-  }
-
-  .footer-details {
-    margin-top: 6pt;
-  }
-
-  .footer-bottom {
-    display: none;
   }
 }

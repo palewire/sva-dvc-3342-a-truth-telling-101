@@ -2,14 +2,20 @@
 meta:
   title: 'Truth-Telling 101: Artists Meet Data Journalism | SVA Continuing Education'
   description: 'The Fall 2026 syllabus for Ben Welsh’s six-week, in-person data journalism course at the School of Visual Arts.'
+  image: 'social/sva-continuing-education.avif'
+  imageAlt: 'A hand draws colorful three-dimensional letters spelling Art on a chalkboard.'
+  imageWidth: '1777'
+  imageHeight: '999'
 
 course:
   title: 'Truth-Telling 101: Artists Meet Data Journalism'
   code: 'DVC-3342-A'
   school: 'School of Visual Arts'
-  program: 'Continuing Education / Professional Development'
+  schoolUrl: 'https://sva.edu'
+  program: 'Continuing Education'
+  programUrl: 'https://sva.edu/academics/continuing-education/overview'
   term: 'Fall 2026'
-  proposition: "Learn how New York's leading newsrooms turn raw data into compelling stories"
+  proposition: "Learn how New York's leading newsrooms turn raw data into compelling journalism"
   meetingLabel: 'Six Monday evenings'
   dateRange: 'Oct. 5–Nov. 9, 2026'
   time: '6:30–9:30 p.m.'
@@ -21,22 +27,40 @@ course:
 
 introduction:
   kicker: 'About this course'
-  title: 'Data science on a deadline'
+  title: 'Data science on deadline'
   firstParagraph: 'In this hands-on introduction to data journalism, students will learn how to blend statistical analysis with time-tested reporting techniques.'
-  secondParagraph: 'You will work through the full arc of a data-driven story by identifying newsworthy questions, locating data that can provide the answers, preparing it for rigorous analysis, and interviewing it to develop meaningful findings.'
+  secondParagraph: 'You will practice the fundamental skills of the craft by working through the full arc of data-driven stories, together in class and then on your own. By the end of the six-week course, you will be ready to pitch a professional editor.'
   quote: "To cope with the acceleration of social change in today's world, journalism must become social science in a hurry."
   quoteAttribution: 'Philip Meyer'
   quoteUrl: 'https://www.amazon.com/Precision-Journalism-Reporters-Introduction-Science/dp/0742520629'
 
+skills:
+  kicker: "What we'll cover"
+  title: 'Fundamental skills'
+  description: "You'll get multiple rounds of practice applying the key techniques common to every data story."
+  items:
+    - title: 'Identifying newsworthy questions'
+      icon: 'Lightbulb'
+    - title: 'Locating data that can provide the answers'
+      icon: 'Database'
+    - title: 'Preparing raw data for rigorous analysis'
+      icon: 'Hammer'
+    - title: 'Interviewing data to develop meaningful findings'
+      icon: 'BarChart3'
+    - title: 'Verifying your findings in the real world'
+      icon: 'Map'
+    - title: 'Ensuring subjects have an opportunity to respond'
+      icon: 'MessageCircle'
+
 schedule:
-  kicker: 'Six meetings'
-  title: 'Class dates'
-  note: 'Topics and guest appearances will be announced as plans are confirmed.'
+  kicker: 'Documentation'
+  title: 'Classroom scripts'
+  note: 'All of the materials we cover will be made available here after class.'
   weeks:
     - number: 1
       date: '2026-10-05'
-      displayDate: 'Monday, Oct. 5'
-      topic: 'To be announced'
+      displayDate: 'October 5, 2026'
+      topic: 'Social science in a hurry'
     - number: 2
       date: '2026-10-12'
       displayDate: 'Monday, Oct. 12'
@@ -59,32 +83,30 @@ schedule:
       topic: 'To be announced'
 
 guestSpeakers:
-  kicker: 'Working journalists'
-  title: 'Meet Our Guest Speakers'
+  kicker: 'Visiting experts'
+  title: 'Meet our guest speakers'
   description: "Three of the city's best data reporters will join our class to share how they turn data into impactful journalism."
   speakers:
     - name: 'Caitlin Ostroff'
       newsroom: 'The Wall Street Journal'
       workUrl: 'https://www.wsj.com/news/author/caitlin-ostroff'
-      photo: 'caitlin-ostroff.jpg'
+      photo: 'caitlin-ostroff-transparent.png'
     - name: 'Haidee Chu'
       newsroom: 'The City Reporter'
       workUrl: 'https://www.thecityreporter.nyc/author/haidee/'
-      photo: 'haidee-chu.jpg'
+      photo: 'haidee-chu-transparent.png'
     - name: 'Bianca Pallaro'
       newsroom: 'The New York Times'
       workUrl: 'https://www.nytimes.com/by/bianca-pallaro'
-      photo: 'bianca-pallaro.png'
+      photo: 'bianca-pallaro-transparent.png'
 
 instructor:
   kicker: 'Faculty'
-  title: 'Meet Your Instructor'
+  title: 'Meet your instructor'
+  description: 'Each class will be led in person by a working professional.'
   name: 'Ben Welsh'
   role: 'News Applications Editor, Reuters'
   bio: 'I am a reporter, editor and computer programmer with more than 20 years of journalism experience. You contact me at '
   email: 'b@palewi.re'
   profileUrl: 'https://palewi.re/who-is-ben-welsh/'
-  photo: 'ben-welsh.jpg'
-
-footer:
-  note: 'For registration, location, tuition, and school policies, consult the official SVA course listing.'
+  photo: 'ben-welsh-transparent.png'
