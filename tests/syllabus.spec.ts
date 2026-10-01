@@ -22,7 +22,9 @@ test('shows the SVA course facts without artwork in the hero', async ({ page }) 
   await expect(page.locator('.hero img, .hero svg, .hero canvas')).toHaveCount(0);
   await expect(page.locator('.site-nav')).toHaveCount(0);
   await expect(page.locator('.hero-official')).toHaveCount(0);
-  await expect(page.getByRole('link', { name: /Official SVA course listing/ })).toHaveCount(0);
+  await expect(
+    page.getByRole('link', { name: /Official SVA course listing/ })
+  ).toHaveCount(0);
   await expect(page.locator('body')).not.toContainText('CUNY');
 });
 
