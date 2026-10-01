@@ -128,7 +128,6 @@ h3 {
 
 .masthead {
   background: var(--white);
-  border-bottom: 1px solid var(--sva-charcoal);
 }
 
 .masthead-inner {
@@ -172,18 +171,8 @@ h3 {
 .brand-name {
   color: var(--sva-red);
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
-}
-
-.brand-program {
-  margin-top: 3px;
-  color: var(--sva-copy);
-  font-family: var(--font-ui);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 .brand-name:hover {
@@ -401,7 +390,6 @@ h3 {
   padding: 32px;
   background: var(--white);
   border: 1px solid var(--sva-blue);
-  border-bottom-width: 4px;
 }
 
 .course-quote p {
@@ -770,10 +758,6 @@ h3 {
     font-size: 14px;
   }
 
-  .brand-program {
-    font-size: 11px;
-  }
-
   .site-nav {
     width: 100%;
     justify-content: space-between;
@@ -929,7 +913,6 @@ h3 {
   }
 
   .brand-name,
-  .brand-program,
   .hero-kicker,
   .hero h1,
   .hero h1 .hero-title-accent,

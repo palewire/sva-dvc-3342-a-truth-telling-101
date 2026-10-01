@@ -23,9 +23,6 @@
         <a class="brand-name" href={data.site.course.schoolUrl}
           >{data.site.course.school}</a
         >
-        <a class="brand-program" href={data.site.course.programUrl}
-          >{data.site.course.program}</a
-        >
       </span>
     </div>
   </div>

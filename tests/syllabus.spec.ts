@@ -49,11 +49,9 @@ test('shows the SVA course facts without artwork in the hero', async ({ page }) 
   } else {
     await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
   }
-  const departmentUrl = 'https://sva.edu/academics/continuing-education/overview';
   await expect(page.locator('.brand-mark')).toHaveAttribute('href', 'https://sva.edu');
   await expect(page.locator('.brand-name')).toHaveAttribute('href', 'https://sva.edu');
-  await expect(page.locator('.brand-program')).toHaveText('Continuing Education');
-  await expect(page.locator('.brand-program')).toHaveAttribute('href', departmentUrl);
+  await expect(page.locator('.brand-program')).toHaveCount(0);
   await expect(page.locator('.site-footer')).toHaveCount(0);
   await expect(page.locator('body')).not.toContainText('Professional Development');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Truth-Telling 101');
