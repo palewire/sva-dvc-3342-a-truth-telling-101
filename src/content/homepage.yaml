@@ -54,7 +54,7 @@ skills:
 schedule:
   kicker: 'Documentation'
   title: 'Classroom scripts'
-  note: 'All of the materials we cover will be made available here after class.'
+  note: 'All of the materials we cover will be made available after class.'
   weeks:
     - number: 1
       date: '2026-10-05'

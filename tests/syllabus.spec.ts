@@ -138,7 +138,7 @@ test('shows one disabled classroom script', async ({ page }) => {
   await expect(page.locator('#scripts .section-kicker')).toHaveText('Documentation');
   await expect(page.locator('#scripts-title')).toHaveText('Classroom scripts');
   await expect(page.locator('#scripts .section-intro')).toHaveText(
-    'All of the materials we cover will be made available here after class.'
+    'All of the materials we cover will be made available after class.'
   );
   await expect(page.locator('.script-card')).toHaveCount(1);
   await expect(page.locator('.script-card')).toHaveAttribute('aria-disabled', 'true');
