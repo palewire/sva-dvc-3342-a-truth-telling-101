@@ -13,7 +13,26 @@ test('shows the SVA course facts without artwork in the hero', async ({ page }) 
   await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Truth-Telling 101');
   await expect(page.locator('.hero-proposition')).toHaveText(
-    "Learn how New York's leading newsrooms turn raw data into compelling journalism"
+    "Learn how New York's leading newsrooms turn raw data into compelling stories"
+  );
+  await expect(page.locator('.introduction-copy p')).toHaveText([
+    'In this hands-on introduction to data journalism, students will learn how to blend statistical analysis with time-tested reporting techniques.',
+    'You will work through the full arc of a data-driven story by identifying newsworthy questions, locating data that can provide the answers, preparing it for rigorous analysis, and interviewing it to develop meaningful findings.'
+  ]);
+  await expect(page.locator('.introduction .section-kicker')).toHaveText(
+    'About this course'
+  );
+  await expect(page.locator('#introduction-title')).toHaveText(
+    'Data science on a deadline'
+  );
+  await expect(page.locator('.course-quote p')).toHaveText(
+    "“To cope with the acceleration of social change in today's world, journalism must become social science in a hurry.”"
+  );
+  await expect(page.locator('.course-quote cite a')).toHaveText('Philip Meyer');
+  await expect(page.locator('.course-quote cite')).toHaveText('— Philip Meyer');
+  await expect(page.locator('.course-quote cite a')).toHaveAttribute(
+    'href',
+    'https://www.amazon.com/Precision-Journalism-Reporters-Introduction-Science/dp/0742520629'
   );
   await expect(page.locator('.hero')).toContainText('DVC-3342-A');
   await expect(page.locator('.hero')).toContainText('Oct. 5–Nov. 9, 2026');

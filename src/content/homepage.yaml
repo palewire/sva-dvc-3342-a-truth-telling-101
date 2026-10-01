@@ -9,7 +9,7 @@ course:
   school: 'School of Visual Arts'
   program: 'Continuing Education / Professional Development'
   term: 'Fall 2026'
-  proposition: "Learn how New York's leading newsrooms turn raw data into compelling journalism"
+  proposition: "Learn how New York's leading newsrooms turn raw data into compelling stories"
   meetingLabel: 'Six Monday evenings'
   dateRange: 'Oct. 5–Nov. 9, 2026'
   time: '6:30–9:30 p.m.'
@@ -20,12 +20,13 @@ course:
   officialLinkLabel: 'Official SVA course listing'
 
 introduction:
-  kicker: 'About the course'
-  title: 'Interview the data.'
-  firstParagraph: 'This introduction is for artists, academics, advocates, designers, researchers, and other communicators outside journalism who want to learn how reporters work with data.'
-  secondParagraph: 'We will move from identifying questions and locating data through preparing, analyzing, verifying, visualizing, and reporting what we find. The focus is on testing claims and telling accurate, humane stories—not coding for its own sake.'
-  quote: 'social science in a hurry'
-  quoteAttribution: 'Philip Meyer on computer-assisted reporting'
+  kicker: 'About this course'
+  title: 'Data science on a deadline'
+  firstParagraph: 'In this hands-on introduction to data journalism, students will learn how to blend statistical analysis with time-tested reporting techniques.'
+  secondParagraph: 'You will work through the full arc of a data-driven story by identifying newsworthy questions, locating data that can provide the answers, preparing it for rigorous analysis, and interviewing it to develop meaningful findings.'
+  quote: "To cope with the acceleration of social change in today's world, journalism must become social science in a hurry."
+  quoteAttribution: 'Philip Meyer'
+  quoteUrl: 'https://www.amazon.com/Precision-Journalism-Reporters-Introduction-Science/dp/0742520629'
 
 schedule:
   kicker: 'Six meetings'

@@ -122,7 +122,8 @@ export function loadCourse(): CourseContent {
       firstParagraph: string(introduction, 'firstParagraph', 'introduction'),
       secondParagraph: string(introduction, 'secondParagraph', 'introduction'),
       quote: string(introduction, 'quote', 'introduction'),
-      quoteAttribution: string(introduction, 'quoteAttribution', 'introduction')
+      quoteAttribution: string(introduction, 'quoteAttribution', 'introduction'),
+      quoteUrl: string(introduction, 'quoteUrl', 'introduction')
     },
     schedule: {
       kicker: string(schedule, 'kicker', 'schedule'),

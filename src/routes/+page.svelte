@@ -28,7 +28,12 @@
         </div>
         <blockquote class="course-quote">
           <p>“{data.site.introduction.quote}”</p>
-          <cite>{data.site.introduction.quoteAttribution}</cite>
+          <cite>
+            <span aria-hidden="true">—</span>
+            <a href={data.site.introduction.quoteUrl}
+              >{data.site.introduction.quoteAttribution}</a
+            >
+          </cite>
         </blockquote>
       </div>
     </div>
