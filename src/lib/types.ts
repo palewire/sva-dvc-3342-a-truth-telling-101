@@ -43,8 +43,9 @@ export interface CourseContent {
     name: string;
     role: string;
     bio: string;
+    email: string;
     profileUrl: string;
-    profileLabel: string;
+    photo?: string;
   };
   footer: {
     note: string;

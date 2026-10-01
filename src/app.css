@@ -489,17 +489,33 @@ h3 {
   min-width: 0;
   align-items: center;
   gap: 16px;
-  padding: 32px;
+  padding: 16px;
   background: var(--white);
   border: 1px solid var(--rule);
   border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.speaker-card:hover,
+.speaker-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgb(20 20 20 / 12%);
+}
+
+.speaker-card:focus-visible {
+  outline: 3px solid var(--sva-red);
+  outline-offset: 3px;
 }
 
 .speaker-portrait {
   position: relative;
   display: grid;
-  width: 80px;
-  height: 80px;
+  width: 104px;
+  height: 104px;
   flex: none;
   place-items: center;
   overflow: hidden;
@@ -513,14 +529,6 @@ h3 {
 
 .speaker-card:nth-child(3) .speaker-portrait {
   background: var(--sva-red);
-}
-
-.portrait-initials {
-  color: var(--white);
-  font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1;
 }
 
 .speaker-portrait img {
@@ -554,12 +562,6 @@ h3 {
   line-height: 1.4;
 }
 
-.speaker-info a {
-  color: var(--sva-red);
-  font-size: 14px;
-  font-weight: 700;
-}
-
 .instructor-section {
   background: var(--surface);
 }
@@ -572,6 +574,7 @@ h3 {
 }
 
 .instructor-avatar {
+  position: relative;
   display: grid;
   width: 150px;
   height: 150px;
@@ -583,6 +586,31 @@ h3 {
   font-size: 48px;
   font-weight: 700;
   line-height: 1;
+  overflow: hidden;
+  border-radius: 4px;
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.instructor-avatar:hover,
+.instructor-avatar:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgb(20 20 20 / 12%);
+}
+
+.instructor-avatar:focus-visible {
+  outline: 3px solid var(--sva-red);
+  outline-offset: 3px;
+}
+
+.instructor-avatar img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .instructor-details {
@@ -863,16 +891,12 @@ h3 {
   }
 
   .speaker-card {
-    padding: 24px;
+    padding: 12px;
   }
 
   .speaker-portrait {
-    width: 60px;
-    height: 60px;
-  }
-
-  .portrait-initials {
-    font-size: 20px;
+    width: 80px;
+    height: 80px;
   }
 
   .instructor-profile {
@@ -1077,7 +1101,6 @@ h3 {
     gap: 6pt;
   }
 
-  .speaker-info a,
   .instructor-details a {
     color: #000;
   }

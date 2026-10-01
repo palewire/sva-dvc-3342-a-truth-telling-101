@@ -49,9 +49,6 @@
         <span class="meta-label">Format</span>
         <strong>{course.format}</strong>
       </div>
-      <a class="hero-official" href={course.officialUrl}
-        >{course.officialLinkLabel} <span aria-hidden="true">↗</span></a
-      >
     </div>
   </div>
 </section>

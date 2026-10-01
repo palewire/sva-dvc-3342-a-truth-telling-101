@@ -1,6 +1,5 @@
 <script lang="ts">
   import { base } from '$app/paths';
-  import { initials } from '$lib/initials';
   import type { CourseContent } from '$lib/types';
 
   let { guests }: { guests: CourseContent['guestSpeakers'] } = $props();
@@ -16,11 +15,12 @@
 
     <div class="speakers-grid">
       {#each guests.speakers as speaker (speaker.name)}
-        <article class="speaker-card">
+        <a
+          class="speaker-card"
+          href={speaker.workUrl}
+          aria-label={'See ' + speaker.name + '’s work'}
+        >
           <div class="speaker-portrait">
-            <span class="portrait-initials" aria-hidden="true"
-              >{initials(speaker.name)}</span
-            >
             {#if speaker.photo}
               <img
                 src={base + '/speakers/' + speaker.photo}
@@ -35,11 +35,8 @@
           <div class="speaker-info">
             <h3>{speaker.name}</h3>
             <p>{speaker.newsroom}</p>
-            <a href={speaker.workUrl} aria-label={'See ' + speaker.name + '’s work'}
-              >View work <span aria-hidden="true">↗</span></a
-            >
           </div>
-        </article>
+        </a>
       {/each}
     </div>
   </div>

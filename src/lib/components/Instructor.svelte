@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { initials } from '$lib/initials';
+  import { base } from '$app/paths';
   import type { CourseContent } from '$lib/types';
 
   let { instructor }: { instructor: CourseContent['instructor'] } = $props();
@@ -16,14 +16,22 @@
       <h2 id="instructor-title">{instructor.title}</h2>
     </div>
     <div class="instructor-profile">
-      <div class="instructor-avatar" aria-hidden="true">{initials(instructor.name)}</div>
+      <a
+        class="instructor-avatar"
+        href={instructor.profileUrl}
+        aria-label={'Read more about ' + instructor.name}
+      >
+        {#if instructor.photo}
+          <img src={base + '/' + instructor.photo} alt="" loading="lazy" />
+        {/if}
+      </a>
       <div class="instructor-details">
         <h3>{instructor.name}</h3>
         <p class="instructor-affiliation">{instructor.role}</p>
-        <p>{instructor.bio}</p>
-        <a href={instructor.profileUrl}
-          >{instructor.profileLabel} <span aria-hidden="true">↗</span></a
-        >
+        <p>
+          {instructor.bio}
+          <a href={'mailto:' + instructor.email}>{instructor.email}</a>.
+        </p>
       </div>
     </div>
   </div>

@@ -53,6 +53,7 @@ export function loadCourse(): CourseContent {
   const guestSpeakers = object(root.guestSpeakers, 'guestSpeakers');
   const instructor = object(root.instructor, 'instructor');
   const footer = object(root.footer, 'footer');
+  const instructorPhoto = optionalString(instructor, 'photo', 'instructor');
 
   const weeks: Week[] = array(schedule.weeks, 'schedule.weeks').map((item, index) => {
     const week = object(item, 'schedule.weeks[' + index + ']');
@@ -139,8 +140,9 @@ export function loadCourse(): CourseContent {
       name: string(instructor, 'name', 'instructor'),
       role: string(instructor, 'role', 'instructor'),
       bio: string(instructor, 'bio', 'instructor'),
+      email: string(instructor, 'email', 'instructor'),
       profileUrl: string(instructor, 'profileUrl', 'instructor'),
-      profileLabel: string(instructor, 'profileLabel', 'instructor')
+      ...(instructorPhoto ? { photo: instructorPhoto } : {})
     },
     footer: {
       note: string(footer, 'note', 'footer')

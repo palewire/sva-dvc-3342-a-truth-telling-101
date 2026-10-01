@@ -22,11 +22,6 @@
         <span class="brand-program">{data.site.course.program}</span>
       </span>
     </a>
-    <nav class="site-nav" aria-label="Course sections">
-      <a href={base + '/#schedule'}>Class dates</a>
-      <a href={base + '/#guests'}>Guests</a>
-      <a href={base + '/#instructor'}>Instructor</a>
-    </nav>
   </div>
 </header>
 
@@ -44,9 +39,6 @@
       </div>
       <div class="footer-details">
         <p>{data.site.footer.note}</p>
-        <a href={data.site.course.officialUrl}
-          >{data.site.course.officialLinkLabel} <span aria-hidden="true">↗</span></a
-        >
       </div>
     </div>
     <div class="footer-bottom">

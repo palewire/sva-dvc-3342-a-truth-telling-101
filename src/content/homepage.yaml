@@ -58,26 +58,30 @@ schedule:
 guestSpeakers:
   kicker: 'Working journalists'
   title: 'Meet Our Guest Speakers'
-  description: 'Three journalists will join the class. Their appearance dates will be shared once confirmed.'
+  description: "Three of the city's best data reporters will join our class to share how they turn data into impactful journalism."
   speakers:
     - name: 'Caitlin Ostroff'
       newsroom: 'The Wall Street Journal'
       workUrl: 'https://www.wsj.com/news/author/caitlin-ostroff'
+      photo: 'caitlin-ostroff.jpg'
     - name: 'Haidee Chu'
       newsroom: 'The City Reporter'
       workUrl: 'https://www.thecityreporter.nyc/author/haidee/'
+      photo: 'haidee-chu.jpg'
     - name: 'Bianca Pallaro'
       newsroom: 'The New York Times'
       workUrl: 'https://www.nytimes.com/by/bianca-pallaro'
+      photo: 'bianca-pallaro.png'
 
 instructor:
   kicker: 'Faculty'
   title: 'Meet Your Instructor'
   name: 'Ben Welsh'
-  role: 'News applications editor, Reuters'
-  bio: 'Ben Welsh is a reporter, editor, and computer programmer. He is the news applications editor at Reuters.'
+  role: 'News Applications Editor, Reuters'
+  bio: 'I am a reporter, editor and computer programmer with more than 20 years of journalism experience. You contact me at '
+  email: 'b@palewi.re'
   profileUrl: 'https://palewi.re/who-is-ben-welsh/'
-  profileLabel: 'More about Ben'
+  photo: 'ben-welsh.jpg'
 
 footer:
   note: 'For registration, location, tuition, and school policies, consult the official SVA course listing.'

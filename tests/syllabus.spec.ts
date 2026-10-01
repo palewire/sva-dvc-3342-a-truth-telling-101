@@ -1,8 +1,5 @@
 import { expect, test } from '@playwright/test';
 
-const officialUrl =
-  'https://sva.edu/academics/continuing-education/professional-development/courses/truth-telling-101-artists-meet-data-journalism-26-cf-dvc-3342-a';
-
 test('shows the SVA course facts without artwork in the hero', async ({ page }) => {
   await page.goto('./');
 
@@ -23,10 +20,29 @@ test('shows the SVA course facts without artwork in the hero', async ({ page }) 
   await expect(page.locator('.hero')).toContainText('In person');
   await expect(page.locator('.hero')).toContainText('Ben Welsh');
   await expect(page.locator('.hero img, .hero svg, .hero canvas')).toHaveCount(0);
-  await expect(
-    page.getByRole('link', { name: /Official SVA course listing/ }).first()
-  ).toHaveAttribute('href', officialUrl);
+  await expect(page.locator('.site-nav')).toHaveCount(0);
+  await expect(page.locator('.hero-official')).toHaveCount(0);
+  await expect(page.getByRole('link', { name: /Official SVA course listing/ })).toHaveCount(0);
   await expect(page.locator('body')).not.toContainText('CUNY');
+});
+
+test('links the instructor photo to the bio page', async ({ page }) => {
+  await page.goto('./');
+
+  const photoLink = page.locator('.instructor-avatar');
+  await expect(photoLink).toHaveAttribute('href', 'https://palewi.re/who-is-ben-welsh/');
+  await expect(photoLink.locator('img')).toHaveAttribute('src', /\/ben-welsh\.jpg$/);
+  await expect(page.locator('.instructor-affiliation')).toHaveText(
+    'News Applications Editor, Reuters'
+  );
+  await expect(
+    page.locator('.instructor-details > p:not(.instructor-affiliation)')
+  ).toHaveText(
+    'I am a reporter, editor and computer programmer with more than 20 years of journalism experience. You contact me at b@palewi.re.'
+  );
+  await expect(
+    page.locator('.instructor-details a[href="mailto:b@palewi.re"]')
+  ).toHaveText('b@palewi.re');
 });
 
 test('lists all six unpublished class dates as plain text', async ({ page }) => {
@@ -53,47 +69,48 @@ test('lists all six unpublished class dates as plain text', async ({ page }) => 
   await expect(page.locator('a[href*="/weeks/"]')).toHaveCount(0);
 });
 
-test('names the three booked guests without assigning dates or photos', async ({
-  page
-}) => {
+test('names the three booked guests without assigning dates', async ({ page }) => {
   await page.goto('./');
 
   const speakers = [
     [
       'Caitlin Ostroff',
       'The Wall Street Journal',
-      'https://www.wsj.com/news/author/caitlin-ostroff',
-      'CO'
+      'https://www.wsj.com/news/author/caitlin-ostroff'
     ],
-    [
-      'Haidee Chu',
-      'The City Reporter',
-      'https://www.thecityreporter.nyc/author/haidee/',
-      'HC'
-    ],
-    [
-      'Bianca Pallaro',
-      'The New York Times',
-      'https://www.nytimes.com/by/bianca-pallaro',
-      'BP'
-    ]
+    ['Haidee Chu', 'The City Reporter', 'https://www.thecityreporter.nyc/author/haidee/'],
+    ['Bianca Pallaro', 'The New York Times', 'https://www.nytimes.com/by/bianca-pallaro']
   ];
   const cards = page.locator('.speaker-card');
   await expect(cards).toHaveCount(speakers.length);
 
-  for (const [index, [name, newsroom, url, initials]] of speakers.entries()) {
+  for (const [index, [name, newsroom, url]] of speakers.entries()) {
     const card = cards.nth(index);
+    await expect(card).toHaveAttribute('href', url);
     await expect(card.getByRole('heading', { name })).toBeVisible();
     await expect(card.locator('.speaker-info p')).toHaveText(newsroom);
-    await expect(card.locator('.portrait-initials')).toHaveText(initials);
-    await expect(card.locator('img')).toHaveCount(0);
-    await expect(card.getByRole('link', { name: `See ${name}’s work` })).toHaveAttribute(
-      'href',
-      url
-    );
+    await expect(card.locator('.portrait-initials')).toHaveCount(0);
+    if (name === 'Caitlin Ostroff') {
+      await expect(card.locator('img')).toHaveAttribute(
+        'src',
+        /\/speakers\/caitlin-ostroff\.jpg$/
+      );
+    } else if (name === 'Haidee Chu') {
+      await expect(card.locator('img')).toHaveAttribute(
+        'src',
+        /\/speakers\/haidee-chu\.jpg$/
+      );
+    } else if (name === 'Bianca Pallaro') {
+      await expect(card.locator('img')).toHaveAttribute(
+        'src',
+        /\/speakers\/bianca-pallaro\.png$/
+      );
+    } else {
+      await expect(card.locator('img')).toHaveCount(0);
+    }
   }
   await expect(page.locator('.guests-section')).toContainText(
-    'Their appearance dates will be shared once confirmed.'
+    "Three of the city's best data reporters will join our class to share how they turn data into impactful journalism."
   );
 });
 
