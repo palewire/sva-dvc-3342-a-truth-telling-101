@@ -76,6 +76,6 @@ that path. After Ben chooses the public URL, set VITE_CANONICAL_URL to the full
 homepage URL, including its path and trailing slash. Until then, canonical
 metadata is omitted.
 
+The repository is [palewire/sva-dvc-3342-a-truth-telling-101](https://github.com/palewire/sva-dvc-3342-a-truth-telling-101).
 There are no hosting credentials, production deployment workflow, or fixed
-public URL in this project. Choose the repository, URL, and host before adding
-those settings.
+public URL in this project. Choose the URL and host before adding those settings.
