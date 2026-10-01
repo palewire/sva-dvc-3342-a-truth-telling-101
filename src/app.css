@@ -45,6 +45,7 @@
   --sva-copy: #4d4d4d;
   --sva-yellow: #ffe588;
   --sva-pale-yellow: #fff2bb;
+  --link-interaction: var(--sva-red);
   --white: #fff;
   --surface: #f5f5f5;
   --rule: #d8d8d8;
@@ -77,14 +78,11 @@ a {
 a {
   color: inherit;
   text-underline-offset: 0.2em;
-}
-
-a:hover {
-  color: var(--sva-red);
+  transition: color 160ms ease;
 }
 
 a:focus-visible {
-  outline: 3px solid var(--sva-red);
+  outline: 3px solid var(--link-interaction);
   outline-offset: 4px;
 }
 
@@ -173,10 +171,6 @@ h3 {
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 700;
-}
-
-.brand-name:hover {
-  color: var(--sva-charcoal);
 }
 
 .site-nav {
@@ -519,7 +513,7 @@ h3 {
 }
 
 .speaker-card:focus-visible {
-  outline: 3px solid var(--sva-red);
+  outline: 3px solid var(--link-interaction);
   outline-offset: 3px;
 }
 
@@ -607,7 +601,7 @@ h3 {
 }
 
 .instructor-avatar:focus-visible {
-  outline: 3px solid var(--sva-red);
+  outline: 3px solid var(--link-interaction);
   outline-offset: 3px;
 }
 
@@ -652,12 +646,9 @@ h3 {
 }
 
 .instructor-bio a {
-  color: var(--sva-red-on-surface);
+  color: inherit;
   font-weight: 700;
-}
-
-.hero a:focus-visible {
-  outline-color: var(--sva-yellow);
+  text-decoration-color: var(--sva-red);
 }
 
 .week-page {
@@ -717,6 +708,21 @@ h3 {
 
 .week-body a {
   color: var(--sva-red);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--link-interaction);
+}
+
+.brand-name:hover,
+.brand-name:focus-visible {
+  color: var(--sva-charcoal);
+}
+
+.instructor-bio a:hover,
+.instructor-bio a:focus-visible {
+  color: var(--link-interaction);
 }
 
 @media (max-width: 1024px) {
@@ -1022,7 +1028,7 @@ h3 {
     gap: 6pt;
   }
 
-  .instructor-details a {
+  .instructor-bio a {
     color: #000;
   }
 

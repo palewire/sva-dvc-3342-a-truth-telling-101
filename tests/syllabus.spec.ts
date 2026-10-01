@@ -51,6 +51,8 @@ test('shows the SVA course facts without artwork in the hero', async ({ page }) 
   }
   await expect(page.locator('.brand-mark')).toHaveAttribute('href', 'https://sva.edu');
   await expect(page.locator('.brand-name')).toHaveAttribute('href', 'https://sva.edu');
+  await page.locator('.brand-name').hover();
+  await expect(page.locator('.brand-name')).toHaveCSS('color', 'rgb(73, 73, 73)');
   await expect(page.locator('.brand-program')).toHaveCount(0);
   await expect(page.locator('.site-footer')).toHaveCount(0);
   await expect(page.locator('body')).not.toContainText('Professional Development');
@@ -127,6 +129,17 @@ test('links the instructor photo to the bio page', async ({ page }) => {
   await expect(page.locator('.instructor-bio a[href="mailto:b@palewi.re"]')).toHaveText(
     'b@palewi.re'
   );
+  const heroInstructorLink = page.locator('.hero-meta-item').first().locator('a');
+  const emailLink = page.locator('.instructor-bio a[href="mailto:b@palewi.re"]');
+  await expect(emailLink).toHaveCSS(
+    'color',
+    await heroInstructorLink.evaluate((link) => getComputedStyle(link).color)
+  );
+  await emailLink.hover();
+  await expect(emailLink).toHaveCSS('color', 'rgb(230, 31, 0)');
+  await emailLink.focus();
+  await expect(emailLink).toHaveCSS('color', 'rgb(230, 31, 0)');
+  await expect(emailLink).toHaveCSS('outline-color', 'rgb(230, 31, 0)');
 });
 
 test('shows one disabled classroom script', async ({ page }) => {
