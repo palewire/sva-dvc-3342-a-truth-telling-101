@@ -217,8 +217,17 @@ test('fits a phone screen and supports the keyboard skip link', async ({ page })
     () => document.documentElement.scrollWidth - document.documentElement.clientWidth
   );
   expect(overflow).toBeLessThanOrEqual(1);
-  await expect(page.locator('.script-card')).toHaveCount(1);
+  const scriptCard = page.locator('.script-card');
+  const skillCard = page.locator('.course-skill').first();
+  await expect(scriptCard).toHaveCount(1);
   await expect(page.locator('.speaker-card')).toHaveCount(3);
+  await expect(scriptCard).toHaveCSS('padding', '12px');
+  await expect(skillCard).toHaveCSS('padding', '12px');
+  await expect(page.locator('.speaker-card').first()).toHaveCSS('padding', '12px');
+  await expect(page.locator('.section-header h2').first()).toHaveCSS('font-size', '26px');
+  await expect(page.locator('.section-intro').first()).toHaveCSS('font-size', '16px');
+  await expect(page.locator('.course-skill h3').first()).toHaveCSS('font-size', '16px');
+  await expect(page.locator('.script-card h3')).toHaveCSS('font-size', '20px');
   for (const portrait of await page.locator('.speaker-portrait').all()) {
     await expect(portrait).toHaveCSS('background-color', 'rgb(30, 150, 184)');
     await expect(portrait).toHaveCSS('border-radius', '0px');

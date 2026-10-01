@@ -761,7 +761,7 @@ a:focus-visible {
   }
 
   .brand-name {
-    font-size: 14px;
+    font-size: 18px;
   }
 
   .site-nav {
@@ -780,6 +780,13 @@ a:focus-visible {
     padding-block: 40px 20px;
   }
 
+  .hero-kicker,
+  .section-kicker,
+  .meta-label,
+  .week-number {
+    font-size: 13px;
+  }
+
   .hero h1 {
     font-size: clamp(40px, 11vw, 48px);
   }
@@ -792,17 +799,39 @@ a:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .hero-meta-item {
+    padding: 12px;
+  }
+
   .section,
   .schedule-section {
     padding-block: 48px;
   }
 
   .section-header {
+    margin-bottom: 24px;
     padding-left: 16px;
   }
 
   .section-header h2 {
-    font-size: 28px;
+    font-size: 26px;
+  }
+
+  .section-intro,
+  .introduction-copy {
+    font-size: 16px;
+  }
+
+  .section-intro {
+    margin-bottom: 24px;
+  }
+
+  .course-quote {
+    padding: 20px;
+  }
+
+  .course-quote p {
+    font-size: 18px;
   }
 
   .speakers-grid,
@@ -812,6 +841,24 @@ a:focus-visible {
 
   .script-card {
     max-width: none;
+    padding: 12px;
+  }
+
+  .script-card h3 {
+    margin: 8px 0 6px;
+    font-size: 20px;
+  }
+
+  .script-card p {
+    font-size: 14px;
+  }
+
+  .course-skill {
+    padding: 12px;
+  }
+
+  .course-skill h3 {
+    font-size: 16px;
   }
 
   .speaker-card {
