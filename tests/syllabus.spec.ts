@@ -91,12 +91,9 @@ test('shows the SVA course facts without artwork in the hero', async ({ page }) 
   await expect(page.locator('.course-quote p')).toHaveText(
     "“To cope with the acceleration of social change in today's world, journalism must become social science in a hurry.”"
   );
-  await expect(page.locator('.course-quote cite a')).toHaveText('Philip Meyer');
+  await expect(page.locator('.course-quote cite strong')).toHaveText('Philip Meyer');
   await expect(page.locator('.course-quote cite')).toHaveText('— Philip Meyer');
-  await expect(page.locator('.course-quote cite a')).toHaveAttribute(
-    'href',
-    'https://www.amazon.com/Precision-Journalism-Reporters-Introduction-Science/dp/0742520629'
-  );
+  await expect(page.locator('.course-quote cite a')).toHaveCount(0);
   await expect(page.locator('.hero')).toContainText('DVC-3342-A');
   await expect(page.locator('.hero')).toContainText('Oct. 5–Nov. 9, 2026');
   await expect(page.locator('.hero')).toContainText('6:30–9:30 p.m.');

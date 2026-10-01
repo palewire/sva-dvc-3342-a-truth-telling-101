@@ -31,9 +31,7 @@
           <p>“{data.site.introduction.quote}”</p>
           <cite>
             <span aria-hidden="true">—</span>
-            <a href={data.site.introduction.quoteUrl}
-              >{data.site.introduction.quoteAttribution}</a
-            >
+            <strong>{data.site.introduction.quoteAttribution}</strong>
           </cite>
         </blockquote>
       </div>

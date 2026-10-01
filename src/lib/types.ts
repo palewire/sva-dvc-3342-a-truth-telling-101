@@ -32,7 +32,6 @@ export interface CourseContent {
     secondParagraph: string;
     quote: string;
     quoteAttribution: string;
-    quoteUrl: string;
   };
   skills: {
     kicker: string;

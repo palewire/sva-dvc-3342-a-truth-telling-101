@@ -422,7 +422,7 @@ h3 {
   text-align: right;
 }
 
-.course-quote cite a {
+.course-quote cite strong {
   color: var(--sva-red-on-surface);
   font-weight: 700;
 }
