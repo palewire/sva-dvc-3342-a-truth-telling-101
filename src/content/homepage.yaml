@@ -1,0 +1,83 @@
+# Edit the syllabus here. Add a week href only after its matching .svx page is ready.
+meta:
+  title: 'Truth-Telling 101: Artists Meet Data Journalism | SVA Continuing Education'
+  description: 'The Fall 2026 syllabus for Ben Welsh’s six-week, in-person data journalism course at the School of Visual Arts.'
+
+course:
+  title: 'Truth-Telling 101: Artists Meet Data Journalism'
+  code: 'DVC-3342-A'
+  school: 'School of Visual Arts'
+  program: 'Continuing Education / Professional Development'
+  term: 'Fall 2026'
+  proposition: 'Learn how reporters interview the data to ask meaningful questions, test claims, and tell accurate, humane stories.'
+  meetingLabel: 'Six Monday evenings'
+  dateRange: 'Oct. 5–Nov. 9, 2026'
+  time: '6:30–9:30 p.m.'
+  format: 'In person'
+  officialUrl: 'https://sva.edu/academics/continuing-education/professional-development/courses/truth-telling-101-artists-meet-data-journalism-26-cf-dvc-3342-a'
+  officialLinkLabel: 'Official SVA course listing'
+
+introduction:
+  kicker: 'About the course'
+  title: 'Interview the data.'
+  firstParagraph: 'This introduction is for artists, academics, advocates, designers, researchers, and other communicators outside journalism who want to learn how reporters work with data.'
+  secondParagraph: 'We will move from identifying questions and locating data through preparing, analyzing, verifying, visualizing, and reporting what we find. The focus is on testing claims and telling accurate, humane stories—not coding for its own sake.'
+  quote: 'social science in a hurry'
+  quoteAttribution: 'Philip Meyer on computer-assisted reporting'
+
+schedule:
+  kicker: 'Six meetings'
+  title: 'Class dates'
+  note: 'Topics and guest appearances will be announced as plans are confirmed.'
+  weeks:
+    - number: 1
+      date: '2026-10-05'
+      displayDate: 'Monday, Oct. 5'
+      topic: 'To be announced'
+    - number: 2
+      date: '2026-10-12'
+      displayDate: 'Monday, Oct. 12'
+      topic: 'To be announced'
+    - number: 3
+      date: '2026-10-19'
+      displayDate: 'Monday, Oct. 19'
+      topic: 'To be announced'
+    - number: 4
+      date: '2026-10-26'
+      displayDate: 'Monday, Oct. 26'
+      topic: 'To be announced'
+    - number: 5
+      date: '2026-11-02'
+      displayDate: 'Monday, Nov. 2'
+      topic: 'To be announced'
+    - number: 6
+      date: '2026-11-09'
+      displayDate: 'Monday, Nov. 9'
+      topic: 'To be announced'
+
+guestSpeakers:
+  kicker: 'Working journalists'
+  title: 'Meet Our Guest Speakers'
+  description: 'Three journalists will join the class. Their appearance dates will be shared once confirmed.'
+  speakers:
+    - name: 'Caitlin Ostroff'
+      newsroom: 'The Wall Street Journal'
+      workUrl: 'https://www.wsj.com/news/author/caitlin-ostroff'
+    - name: 'Haidee Chu'
+      newsroom: 'The City Reporter'
+      workUrl: 'https://www.thecityreporter.nyc/author/haidee/'
+    - name: 'Bianca Pallaro'
+      newsroom: 'The New York Times'
+      workUrl: 'https://www.nytimes.com/by/bianca-pallaro'
+
+instructor:
+  kicker: 'Faculty'
+  title: 'Meet Your Instructor'
+  name: 'Ben Welsh'
+  role: 'News applications editor, Reuters'
+  bio: 'Ben Welsh is a reporter, editor, and computer programmer. He is the news applications editor at Reuters.'
+  profileUrl: 'https://palewi.re/who-is-ben-welsh/'
+  profileLabel: 'More about Ben'
+
+footer:
+  note: 'For registration, location, tuition, and school policies, consult the official SVA course listing.'
