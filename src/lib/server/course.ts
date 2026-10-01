@@ -1,4 +1,4 @@
-import yaml from 'js-yaml';
+import { load } from 'js-yaml';
 import type { CourseContent, GuestSpeaker, Week } from '$lib/types';
 
 const homepageFiles = import.meta.glob<string>('/src/content/homepage.yaml', {
@@ -45,7 +45,7 @@ export function loadCourse(): CourseContent {
   const source = homepageFiles['/src/content/homepage.yaml'];
   if (!source) throw new Error('src/content/homepage.yaml is missing');
 
-  const root = object(yaml.load(source), 'homepage');
+  const root = object(load(source), 'homepage');
   const meta = object(root.meta, 'meta');
   const course = object(root.course, 'course');
   const introduction = object(root.introduction, 'introduction');
