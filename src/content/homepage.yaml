@@ -26,9 +26,9 @@ course:
   officialLinkLabel: 'Official SVA course listing'
 
 introduction:
-  kicker: 'About this course'
+  kicker: 'What this is'
   title: 'Data science on deadline'
-  firstParagraph: 'In this hands-on introduction to data journalism, students will learn how to blend statistical analysis with time-tested reporting techniques.'
+  firstParagraph: 'In this hands-on introduction to data journalism, students will learn how to blend cutting-edge statistical analysis with time-tested reporting techniques.'
   secondParagraph: 'You will practice the fundamental skills of the craft by working through the full arc of data-driven stories, together in class and then on your own. By the end of the six-week course, you will be ready to pitch a professional editor.'
   quote: "To cope with the acceleration of social change in today's world, journalism must become social science in a hurry."
   quoteAttribution: 'Philip Meyer'

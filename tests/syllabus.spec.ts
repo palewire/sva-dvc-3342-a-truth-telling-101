@@ -61,12 +61,10 @@ test('shows the SVA course facts without artwork in the hero', async ({ page }) 
     "Learn how New York's leading newsrooms turn raw data into compelling journalism"
   );
   await expect(page.locator('.introduction-copy p')).toHaveText([
-    'In this hands-on introduction to data journalism, students will learn how to blend statistical analysis with time-tested reporting techniques.',
+    'In this hands-on introduction to data journalism, students will learn how to blend cutting-edge statistical analysis with time-tested reporting techniques.',
     'You will practice the fundamental skills of the craft by working through the full arc of data-driven stories, together in class and then on your own. By the end of the six-week course, you will be ready to pitch a professional editor.'
   ]);
-  await expect(page.locator('.introduction .section-kicker')).toHaveText(
-    'About this course'
-  );
+  await expect(page.locator('.introduction .section-kicker')).toHaveText('What this is');
   await expect(page.locator('#introduction-title')).toHaveText(
     'Data science on deadline'
   );
