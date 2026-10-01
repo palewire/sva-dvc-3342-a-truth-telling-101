@@ -111,6 +111,8 @@ export function loadCourse(): CourseContent {
       dateRange: string(course, 'dateRange', 'course'),
       time: string(course, 'time', 'course'),
       format: string(course, 'format', 'course'),
+      location: string(course, 'location', 'course'),
+      room: string(course, 'room', 'course'),
       officialUrl: string(course, 'officialUrl', 'course'),
       officialLinkLabel: string(course, 'officialLinkLabel', 'course')
     },

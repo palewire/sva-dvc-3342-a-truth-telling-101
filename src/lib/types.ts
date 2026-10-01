@@ -14,6 +14,8 @@ export interface CourseContent {
     dateRange: string;
     time: string;
     format: string;
+    location: string;
+    room: string;
     officialUrl: string;
     officialLinkLabel: string;
   };

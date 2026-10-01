@@ -11,13 +11,16 @@ test('shows the SVA course facts without artwork in the hero', async ({ page }) 
     /Fall 2026 syllabus/
   );
   await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
-    /Truth-Telling 101:\s*Artists Meet Data Journalism/
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Truth-Telling 101');
+  await expect(page.locator('.hero-proposition')).toHaveText(
+    "Learn how New York's leading newsrooms turn raw data into compelling journalism"
   );
   await expect(page.locator('.hero')).toContainText('DVC-3342-A');
   await expect(page.locator('.hero')).toContainText('Oct. 5–Nov. 9, 2026');
   await expect(page.locator('.hero')).toContainText('6:30–9:30 p.m.');
-  await expect(page.locator('.hero')).toContainText('In person');
+  const location = page.locator('.hero-meta-item').filter({ hasText: 'Location' });
+  await expect(location.locator('strong')).toHaveText('214 E. 21 Street');
+  await expect(location.locator('span').last()).toHaveText('Room 305A');
   await expect(page.locator('.hero')).toContainText('Ben Welsh');
   await expect(page.locator('.hero img, .hero svg, .hero canvas')).toHaveCount(0);
   await expect(page.locator('.site-nav')).toHaveCount(0);

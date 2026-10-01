@@ -8,14 +8,6 @@
     course: CourseContent['course'];
     instructor: CourseContent['instructor'];
   } = $props();
-
-  let title = $derived.by(() => {
-    const separator = course.title.indexOf(':');
-    return {
-      lead: separator < 0 ? course.title : course.title.slice(0, separator + 1),
-      end: separator < 0 ? '' : course.title.slice(separator + 1).trim()
-    };
-  });
 </script>
 
 <section class="hero" aria-labelledby="course-title">
@@ -25,10 +17,7 @@
         {course.term} <span aria-hidden="true">/</span>
         {course.code}
       </p>
-      <h1 id="course-title">
-        <span>{title.lead}</span>
-        {#if title.end}<span class="hero-title-accent">{title.end}</span>{/if}
-      </h1>
+      <h1 id="course-title">Truth-Telling 101</h1>
       <p class="hero-proposition">{course.proposition}</p>
     </div>
   </div>
@@ -46,8 +35,9 @@
         <span>{course.time}</span>
       </div>
       <div class="hero-meta-item">
-        <span class="meta-label">Format</span>
-        <strong>{course.format}</strong>
+        <span class="meta-label">Location</span>
+        <strong>{course.location}</strong>
+        <span>{course.room}</span>
       </div>
     </div>
   </div>
